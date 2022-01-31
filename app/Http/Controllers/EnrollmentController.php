@@ -40,8 +40,8 @@ class EnrollmentController extends Controller
     {
       $user_id =auth()->user()->id;
       $data = Http::get(config('services.finance.host').'/enrollments/'.$enrollment.'/withdraw',['user_id'=>$user_id]);
-      $data = json_decode($data);
-      return redirect()->route('home',)->with('message', 'You have withdrawn your amount Successfully!! ') ;
+      $message = json_decode($data);
+      return redirect()->route('home',)->with('message', 'Withdrawal '.$message.'!') ;
     }
     public function show($enrollment)
     {
